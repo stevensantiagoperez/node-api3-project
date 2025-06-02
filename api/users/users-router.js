@@ -48,13 +48,13 @@ router.put('/:id', validateUserId, validateUser, (req, res, next) => {
   // this needs a middleware to verify user id
   // and another middleware to check that the request body is valid
   User.update(req.params.id, { name: req.name })
-  .then(() => {
-    return User.getById(req.params.id)
-  })
-  .then( user => {
-    res.status.json(user)
-  })
-  .catch(next)
+    .then(() => {
+      return User.getById(req.params.id)
+    })
+    .then(user => {
+      res.json(user)
+    })
+    .catch(next)
 });
 
 router.delete('/:id', validateUserId, async (req, res, next) => {
